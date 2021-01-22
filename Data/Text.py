@@ -87,7 +87,7 @@ class Data_gather():
 	# data to be written row-wise in csv fil 
 	
 	# opening the csv file in 'w+' mode 
-	'''
+	
 	def Two_factor_anova(df):
 		
 		win_m =df.window.mean()
@@ -115,4 +115,4 @@ class Data_gather():
 		print(sst,"\n", ssc0,"\n \t", ssb)
 		err = sst - ssc0 -ssb
 		print("Error = ",err)
-'''
+
