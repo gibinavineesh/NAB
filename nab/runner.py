@@ -33,7 +33,7 @@ from nab.optimizer import optimizeThreshold
 from nab.scorer import scoreCorpus
 from nab.util import updateThresholds, updateFinalResults
 
-
+from Data.Text import Data_gather
 
 class Runner(object):
   """
@@ -256,6 +256,7 @@ class Runner(object):
 
     # Normalize the score from each results file.
     finalResults = {}
+    tes = 0
     for resultsFile in self.resultsFiles:
       profileName = [k for k in list(baselines.keys()) if k in resultsFile][0]
       base = baselines[profileName]
@@ -274,11 +275,13 @@ class Runner(object):
         if detector not in finalResults:
           finalResults[detector] = {}
         finalResults[detector][profile] = score
-
+      if tes == 0:
+        print("\n \nI'm in test = ",score)
+        Data_gather.Anomaly(score)
+        tes = 1
       print(("Final score for \'%s\' detector on \'%s\' profile = %.2f"
              % (detector, profile, score)))
 
     resultsPath = os.path.join(self.resultsDir, "final_results.json")
     updateFinalResults(finalResults, resultsPath)
     print("Final scores have been written to %s." % resultsPath)
-
