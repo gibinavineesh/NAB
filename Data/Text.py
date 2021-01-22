@@ -50,7 +50,7 @@ class Data_gather():
 			print("\n  Ano_score = ",Ano_score)
 			Simple()
 			f2= open("Anomaly_Score.txt","a+")
-			f2.write("%d \n " %value)
+			f2.write("%f \n " %value)
 			f2.close()			#Two_factor_anova()
 			#update(data)
 	def window(val):
